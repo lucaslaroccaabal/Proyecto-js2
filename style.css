@@ -1,29 +1,163 @@
-.caja{
-    height: auto;
-    width: 600px;
-    font-size: 1.5rem;
-    text-align: center;
-    display: inline-block;
-    border-radius: 5px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.partido{
-    margin: 20px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-image: linear-gradient(45deg, rgb(7, 200, 7), rgb(7, 105, 17));
-    box-shadow: 4px 4px 15px 4px green;
+body {
+  background-color: rgb(218, 217, 217);
 }
-.partido p{
-    display: block;
-    text-transform: uppercase;
-    width: 40%;
+
+/* contenedor Main */
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+  padding: 5rem;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.partido input{
-    
-    width: 25px;
-    height: 25px;
-    border: none;
-    border-radius: 3px;
+
+/* contenedor fechas y equipos */
+.contenedorPrincipal {
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px 3px rgb(213, 39, 39);
+  background-color: rgb(213, 39, 39);
+  padding: 2%;
+  min-height: 80vh;
+  height: fit-content;
+  display: flex;
+}
+.equipos {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 35vw;
+  min-width: 350px;
+}
+.fechas {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: start;
+  width: 40vw;
+  min-width: 400px;
+}
+
+/* seleccion Equipos */
+.contenedorSelectorEquipos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 15px;
+}
+.contenedorSelectorEquipos div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.inputEquipo {
+  width: 60%;
+  height: 30px;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgb(218, 217, 217);
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+.inputEquipo:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgb(202, 202, 202);
+}
+.botonEquipo {
+  width: 30px;
+  height: 30px;
+  margin: 0px 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(218, 217, 217);
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+.botonEquipo:focus {
+  box-shadow: 0px 0px 5px rgb(218, 217, 217);
+}
+.botonSiguiente {
+  width: 90px;
+  height: 30px;
+  margin: 0px 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(218, 217, 217);
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+/* partidos en el div de la fecha */
+.contenedorTabla {
+  align-self: flex-start;
+  width: 40vw;
+  min-width: 350px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px 3px rgb(213, 39, 39);
+  background-color: rgb(213, 39, 39);
+  padding: 2%;
+  height: fit-content;
+}
+.tabla {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(218, 217, 217);
+  border-radius: 5px;
+}
+.equipoTabla {
+  display: grid;
+  width: 100%;
+  padding: 3px;
+  justify-content: space-around;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  border-bottom: rgb(140, 140, 140) solid 2px;
+  transition: all 3s;
+  cursor: default;
+}
+.equipoTabla:hover {
+  background-color: rgb(140, 140, 140);
+}
+.equipoTabla p:first-child {
+  font-weight: 600;
+  overflow: hidden;
+}
+.equipoTabla p {
+  font-size: 1.2rem;
+  overflow: hidden;
+}
+
+.partidoFecha {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  align-items: center;
+  justify-items: center;
+  gap: 20px;
+  margin: 5px 0px;
+}
+.partidoFecha input {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgb(218, 217, 217);
+  font-size: 1.2rem;
+  transition: all 0.3s;
+  text-align: center;
+}
+.partidoFecha label {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
