@@ -9,16 +9,20 @@ body {
 
 /* contenedor Main */
 main {
+  display: flex;
+  flex-direction: row;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
   gap: 5rem;
-  padding: 5rem;
-  justify-content: space-evenly;
+  padding: 2rem;
+  justify-content: center;
   align-items: center;
 }
-
+h1 {
+  font-size: 1rem;
+}
 /* contenedor fechas y equipos */
 .contenedorPrincipal {
   border-radius: 15px;

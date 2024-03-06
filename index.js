@@ -43,7 +43,7 @@ class Equipo {
         if (golesEquipoA === golesEquipoB) {
           equipoRival.puntosObtenidos = 1;
         } else {
-          equipoRival.puntosObtenidos = 0
+          equipoRival.puntosObtenidos = 0;
         }
       }
     } else {
@@ -57,18 +57,18 @@ class Equipo {
         if (golesEquipoA === golesEquipoB) {
           equipoRival.puntosObtenidos = 1;
         } else {
-          equipoRival.puntosObtenidos = 0
+          equipoRival.puntosObtenidos = 0;
         }
       }
     }
-    this.golesAFavor = 0
-    this.golesEnContra = 0
-    this.puntos = 0
-    this.diferenciaDeGol = 0
+    this.golesAFavor = 0;
+    this.golesEnContra = 0;
+    this.puntos = 0;
+    this.diferenciaDeGol = 0;
     this.rivales.forEach((rival) => {
       this.golesAFavor = this.golesAFavor + rival.golesAFavor;
       this.golesEnContra = this.golesEnContra + rival.golesEnContra;
-      this.puntos = this.puntos + rival.puntosObtenidos
+      this.puntos = this.puntos + rival.puntosObtenidos;
     });
     this.diferenciaDeGol =
       this.diferenciaDeGol + this.golesAFavor - this.golesEnContra;
@@ -164,14 +164,13 @@ function creadorMensajePartidos() {
       <label>${partido[1].nombre}</label>
       </div>
       `;
-    });;
-    mensaje = mensaje + "</div>"
+    });
+    mensaje = mensaje + "</div>";
   });
 
   return mensaje;
 }
 function creadorTabla(contenedorTabla) {
-
   let mensajeTabla = `<div class="tabla">
     <div class="equipoTabla"> 
     <p>equipo</p> 
@@ -180,11 +179,12 @@ function creadorTabla(contenedorTabla) {
     <p>GF</p>
     <p>GC</p>
     <p>DG</p>
-    </div>`
+    </div>`;
   equipos.forEach((equipo) => {
-
-    if ((equipo.nombre !== "x")) {
-      mensajeTabla = mensajeTabla + `
+    if (equipo.nombre !== "x") {
+      mensajeTabla =
+        mensajeTabla +
+        `
     <div class="equipoTabla"> 
     <p>${equipo.nombre}</p> 
     <p>${equipo.puntos}</p>
@@ -192,14 +192,12 @@ function creadorTabla(contenedorTabla) {
     <p>${equipo.golesAFavor}</p>
     <p>${equipo.golesEnContra}</p>
     <p>${equipo.diferenciaDeGol}</p>
-    </div>`
+    </div>`;
     }
-
-
-  })
-  mensaje = mensaje + "</div>"
-  contenedorTabla.innerHTML = mensajeTabla
-  return contenedorTabla
+  });
+  mensaje = mensaje + "</div>";
+  contenedorTabla.innerHTML = mensajeTabla;
+  return contenedorTabla;
 }
 function actualizarTabla() {
   equipos.sort((a, b) => {
@@ -223,24 +221,23 @@ function actualizarTabla() {
     }
     return 0;
   });
-  console.log(equipos)
-  const divsTabla = document.querySelectorAll(".equipoTabla")
+  console.log(equipos);
+  const divsTabla = document.querySelectorAll(".equipoTabla");
 
-  console.log(divsTabla)
+  console.log(divsTabla);
   equipos.forEach((equipo) => {
     divsTabla.forEach((div) => {
       if (equipo.nombre === div.children[0].innerText) {
-        console.log(equipo)
-        div.style.order = `${equipos.indexOf(equipo)}`
-        div.children[1].innerText = equipo.puntos
-        div.children[2].innerText = equipo.partidosJugados
-        div.children[3].innerText = equipo.golesAFavor
-        div.children[4].innerText = equipo.golesEnContra
-        div.children[5].innerText = equipo.diferenciaDeGol
+        console.log(equipo);
+        div.style.order = `${equipos.indexOf(equipo)}`;
+        div.children[1].innerText = equipo.puntos;
+        div.children[2].innerText = equipo.partidosJugados;
+        div.children[3].innerText = equipo.golesAFavor;
+        div.children[4].innerText = equipo.golesEnContra;
+        div.children[5].innerText = equipo.diferenciaDeGol;
       }
-    })
-  })
-
+    });
+  });
 }
 
 function continuar() {
@@ -252,19 +249,18 @@ function continuar() {
   mensaje = creadorMensajePartidos();
   contenedor.innerHTML = mensaje;
 
-
-  const contenedorTabla = document.createElement("div")
-  contenedorTabla.classList.add("contenedorTabla")
-  const main = document.querySelector("main")
-  const tabla = creadorTabla(contenedorTabla)
-  main.appendChild(tabla)
-  contenedor.classList.add("fechas")
-  contenedor.classList.remove("equipos")
+  const contenedorTabla = document.createElement("div");
+  contenedorTabla.classList.add("contenedorTabla");
+  const main = document.querySelector("main");
+  const tabla = creadorTabla(contenedorTabla);
+  main.appendChild(tabla);
+  contenedor.classList.add("fechas");
+  contenedor.classList.remove("equipos");
   fechas.forEach((fecha) => {
     const divFecha = document.querySelector(
       `#fecha${fechas.indexOf(fecha) + 1}`
     );
-    console.log(divFecha)
+    console.log(divFecha);
     for (let i = 1; i < divFecha.children.length; i++) {
       const input1 = divFecha.children[i].children[1];
       const input2 = divFecha.children[i].children[2];
@@ -278,16 +274,16 @@ function continuar() {
         return equipo2 === equipo.nombre;
       });
       input1.addEventListener("input", (event) => {
-        console.log("aa")
+        console.log("aa");
         equipo1.partidoJugado(event.target.value, input2.value, equipo2);
         equipo2.partidoJugado(input2.value, event.target.value, equipo1);
-        actualizarTabla()
+        actualizarTabla();
       });
       input2.addEventListener("input", (event) => {
-        console.log("aa")
+        console.log("aa");
         equipo2.partidoJugado(event.target.value, input1.value, equipo1);
         equipo1.partidoJugado(input1.value, event.target.value, equipo2);
-        actualizarTabla()
+        actualizarTabla();
       });
     }
   });
@@ -311,7 +307,8 @@ function definirFechas(equipos) {
 
 const contenedor = document.querySelector("#contenedorPrincipal");
 contenedor.innerHTML = ` <div id="sectionSelectorEquipos" class="contenedorSelectorEquipos">
-        <div>
+        <h1> Agregar o Eliminar Equipos </h1><div>
+          
           <button id="botonMenosEquipo" class="botonEquipo">-</button>
           <button id="botonMasEquipo" class="botonEquipo">+</button>
         </div>
@@ -327,49 +324,3 @@ let fechas = [];
 botonMenos.addEventListener("click", eliminarInput);
 botonMas.addEventListener("click", agregarInput);
 botonSiguiente.addEventListener("click", continuar);
-
-// fechas.forEach((fecha) => {
-//   alert(`FECHA ${fechas.indexOf(fecha) + 1}`);
-//   fecha.forEach((partido) => {
-//     alert(`Van a jugar ${partido[0].nombre} vs ${partido[1].nombre} `);
-//     goles0 = parseInt(prompt(`goles de: ${partido[0].nombre}`));
-//     goles1 = parseInt(prompt(`goles de: ${partido[1].nombre}`));
-//     partido[0].partido(goles0, goles1);
-//     partido[1].partido(goles1, goles0);
-//   });
-// });
-// //
-// //ordenar tabla
-// equipos.sort((a, b) => {
-//   if (a.puntos > b.puntos) {
-//     return -1;
-//   }
-//   if (b.puntos > a.puntos) {
-//     return 1;
-//   }
-//   if (a.diferenciaDeGol > b.diferenciaDeGol) {
-//     return -1;
-//   }
-//   if (a.diferenciaDeGol < b.diferenciaDeGol) {
-//     return 1;
-//   }
-//   if (a.golesAFavor > b.golesAFavor) {
-//     return -1;
-//   }
-//   if (a.golesAFavor < b.golesAFavor) {
-//     return 1;
-//   }
-//   return 0;
-// });
-// let tabla = ``;
-// equipos.forEach((equipo) => {
-//   tabla =
-//     tabla +
-//     `\n  ${equipos.indexOf(equipo) + 1}. ${equipo.nombre}   puntos: ${
-//       equipo.puntos
-//     }  DG: ${equipo.diferenciaDeGol}  GF: ${equipo.golesAFavor}  GC: ${
-//       equipo.golesEnContra
-//     }`;
-// });
-// alert(tabla);
-// simular = prompt("quiere volver a simular? (ingresar esc para salir)");
